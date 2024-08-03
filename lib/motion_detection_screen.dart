@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:sensors_plus/sensors_plus.dart';
-import 'motion_sensor_service.dart';
 import 'notification_service.dart';
+import 'motion_sensor_service.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-class HomeScreen extends StatefulWidget {
+class MotionDetectionScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _MotionDetectionScreenState createState() => _MotionDetectionScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MotionDetectionScreenState extends State<MotionDetectionScreen> {
   final MotionSensorService _motionSensorService = MotionSensorService();
   final NotificationService _notificationService = NotificationService();
-  bool _isMeasuring = false;
+  bool _isMeasuringMotion = false;
   List<charts.Series<AccelerometerEvent, int>> _chartData = [];
   List<AccelerometerEvent> _data = [];
 
@@ -22,8 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
     _notificationService.init();
   }
 
-  void _toggleMeasurement() {
-    if (_isMeasuring) {
+  void _toggleMotionMeasurement() {
+    if (_isMeasuringMotion) {
       _motionSensorService.stopListening();
     } else {
       _motionSensorService.startListening((AccelerometerEvent event) {
@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     }
     setState(() {
-      _isMeasuring = !_isMeasuring;
+      _isMeasuringMotion = !_isMeasuringMotion;
     });
   }
 
@@ -72,25 +72,24 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Smart Home Monitoring'),
+        title: Text('Motion Detection'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Monitoring motion...'),
-            SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _toggleMeasurement,
-              child: Text(_isMeasuring ? 'Stop Measuring' : 'Start Measuring'),
+              onPressed: _toggleMotionMeasurement,
+              child: Text(_isMeasuringMotion ? 'Stop Motion Measurement' : 'Start Motion Measurement'),
             ),
             SizedBox(height: 20),
-            _isMeasuring ? Expanded(
-              child: charts.LineChart(
-                _chartData,
-                animate: true,
+            if (_isMeasuringMotion)
+              Expanded(
+                child: charts.LineChart(
+                  _chartData,
+                  animate: true,
+                ),
               ),
-            ) : Container(),
           ],
         ),
       ),
