@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'LocationTrackingScreen.dart';
 import 'light_detection_screen.dart';
 import 'motion_detection_screen.dart';
+import 'location_service.dart';
 
 void main() {
   runApp(SmartHomeMonitoringApp());
@@ -20,6 +22,8 @@ class SmartHomeMonitoringApp extends StatelessWidget {
 }
 
 class MainScreen extends StatelessWidget {
+  final LocationService _locationService = LocationService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +45,8 @@ class MainScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LightDetectionScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => LightDetectionScreen()),
                 );
               },
             ),
@@ -50,7 +55,18 @@ class MainScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MotionDetectionScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => MotionDetectionScreen()),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('Location Tracking'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => LocationTrackingScreen()),
                 );
               },
             ),

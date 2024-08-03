@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _notificationService.init();
+    // Initialization is done in the constructor, no need to call init() here
   }
 
   void _toggleMeasurement() {
@@ -48,21 +48,21 @@ class _HomeScreenState extends State<HomeScreen> {
         id: 'X',
         colorFn: (_, __) => charts.MaterialPalette.red.shadeDefault,
         domainFn: (AccelerometerEvent event, int? index) => index!,
-        measureFn: (AccelerometerEvent event, int? index) => event.x,
+        measureFn: (AccelerometerEvent event, int? index) => event.x.toInt(),
         data: data,
       ),
       charts.Series<AccelerometerEvent, int>(
         id: 'Y',
         colorFn: (_, __) => charts.MaterialPalette.green.shadeDefault,
         domainFn: (AccelerometerEvent event, int? index) => index!,
-        measureFn: (AccelerometerEvent event, int? index) => event.y,
+        measureFn: (AccelerometerEvent event, int? index) => event.y.toInt(),
         data: data,
       ),
       charts.Series<AccelerometerEvent, int>(
         id: 'Z',
         colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
         domainFn: (AccelerometerEvent event, int? index) => index!,
-        measureFn: (AccelerometerEvent event, int? index) => event.z,
+        measureFn: (AccelerometerEvent event, int? index) => event.z.toInt(),
         data: data,
       ),
     ];
@@ -85,12 +85,14 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text(_isMeasuring ? 'Stop Measuring' : 'Start Measuring'),
             ),
             SizedBox(height: 20),
-            _isMeasuring ? Expanded(
+            _isMeasuring
+                ? Expanded(
               child: charts.LineChart(
                 _chartData,
                 animate: true,
               ),
-            ) : Container(),
+            )
+                : Container(),
           ],
         ),
       ),

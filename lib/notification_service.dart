@@ -4,6 +4,8 @@ class NotificationService {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
   FlutterLocalNotificationsPlugin();
 
+  NotificationService();
+
   Future<void> init() async {
     const AndroidInitializationSettings initializationSettingsAndroid =
     AndroidInitializationSettings('@mipmap/ic_launcher');
@@ -17,8 +19,9 @@ class NotificationService {
   Future<void> showNotification(String title, String body) async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
     AndroidNotificationDetails(
-      'your_channel_id',
-      'your_channel_name',
+      'your channel id',
+      'your channel name',
+      channelDescription: 'your channel description',
       importance: Importance.max,
       priority: Priority.high,
       ticker: 'ticker',

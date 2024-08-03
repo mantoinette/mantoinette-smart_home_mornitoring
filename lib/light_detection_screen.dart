@@ -17,7 +17,6 @@ class _LightDetectionScreenState extends State<LightDetectionScreen> {
   void initState() {
     super.initState();
     _light = Light();
-    _notificationService.init();
     _light.lightSensorStream.listen((luxValue) {
       if (_isMeasuringLight) {
         _onLightData(luxValue);
