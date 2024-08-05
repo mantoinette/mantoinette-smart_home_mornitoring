@@ -24,22 +24,4 @@ class NotificationService {
     const NotificationDetails platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics);
     await _flutterLocalNotificationsPlugin.show(0, title, body, platformChannelSpecifics);
   }
-
-  Future<void> showNotificationWithImage(String title, String body, String imagePath) async {
-    final BigPictureStyleInformation bigPictureStyleInformation = BigPictureStyleInformation(
-      FilePathAndroidBitmap(imagePath),
-      contentTitle: title,
-      summaryText: body,
-    );
-    final AndroidNotificationDetails androidPlatformChannelSpecifics = AndroidNotificationDetails(
-      'your_channel_id',
-      'your_channel_name',
-      channelDescription: 'your_channel_description',
-      importance: Importance.max,
-      priority: Priority.high,
-      styleInformation: bigPictureStyleInformation,
-    );
-    final NotificationDetails platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics);
-    await _flutterLocalNotificationsPlugin.show(0, title, body, platformChannelSpecifics);
-  }
 }
