@@ -74,23 +74,28 @@ class _MotionDetectionScreenState extends State<MotionDetectionScreen> {
       appBar: AppBar(
         title: Text('Motion Detection'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: _toggleMotionMeasurement,
-              child: Text(_isMeasuringMotion ? 'Stop Motion Measurement' : 'Start Motion Measurement'),
-            ),
-            SizedBox(height: 20),
-            if (_isMeasuringMotion)
-              Expanded(
-                child: charts.LineChart(
-                  _chartData,
-                  animate: true,
+      body: Container(
+        color: _isMeasuringMotion ? Colors.white : Colors.blue, // Change background color based on state
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: _toggleMotionMeasurement,
+                child: Text(
+                  _isMeasuringMotion ? 'Stop Motion Measurement' : 'Start Motion Measurement',
                 ),
               ),
-          ],
+              SizedBox(height: 20),
+              if (_isMeasuringMotion)
+                Expanded(
+                  child: charts.LineChart(
+                    _chartData,
+                    animate: true,
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

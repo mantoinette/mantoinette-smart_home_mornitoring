@@ -13,20 +13,33 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Smart Home Monitoring'),
+        title: Text('Smart Home Monitoring', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.blue,
+        iconTheme: IconThemeData(color: Colors.white), // Change icon color to white
+        actions: [
+          IconButton(
+            icon: Icon(Icons.clear, color: Colors.white),
+            onPressed: () {
+              // Add your onPressed code here
+            },
+          ),
+        ],
       ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              child: Text('Smart Home Monitoring', style: TextStyle(fontSize: 24)),
+              child: Text(
+                'Smart Home Monitoring',
+                style: TextStyle(fontSize: 24, color: Colors.white),
+              ),
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
             ),
             ListTile(
-              title: Text('Light Detection'),
+              title: Text('Light Detection', style: TextStyle(color: Colors.red)),
               onTap: () {
                 Navigator.push(
                   context,
@@ -35,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: Text('Motion Detection'),
+              title: Text('Motion Detection', style: TextStyle(color: Colors.blue)),
               onTap: () {
                 Navigator.push(
                   context,
@@ -44,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
-              title: Text('Location Tracking'),
+              title: Text('Location Tracking', style: TextStyle(color: Colors.green)),
               onTap: () {
                 Navigator.push(
                   context,
@@ -55,8 +68,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: Center(
-        child: Text('Welcome to Smart Home Monitoring'),
+      body: Container(
+        color: Colors.blue,
+        child: Center(
+          child: Text(
+            'Welcome to Smart Home Monitoring',
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+        ),
       ),
     );
   }

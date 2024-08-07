@@ -55,21 +55,27 @@ class _LightDetectionScreenState extends State<LightDetectionScreen> {
       appBar: AppBar(
         title: Text('Light Detection'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Current light level:'),
-            Text(
-              '$_luxString lux',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _toggleLightMeasurement,
-              child: Text(_isMeasuringLight ? 'Stop Light Measurement' : 'Start Light Measurement'),
-            ),
-          ],
+      body: Container(
+        color: Colors.blue,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Current light level:',
+                style: TextStyle(color: Colors.white),
+              ),
+              Text(
+                '$_luxString lux',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _toggleLightMeasurement,
+                child: Text(_isMeasuringLight ? 'Stop Light Measurement' : 'Start Light Measurement'),
+              ),
+            ],
+          ),
         ),
       ),
     );
