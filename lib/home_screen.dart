@@ -15,15 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Smart Home Monitoring', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue,
-        iconTheme: IconThemeData(color: Colors.white), // Change icon color to white
-        actions: [
-          IconButton(
-            icon: Icon(Icons.clear, color: Colors.white),
-            onPressed: () {
-              // Add your onPressed code here
-            },
-          ),
-        ],
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       drawer: Drawer(
         child: ListView(
@@ -39,31 +31,58 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             ListTile(
-              title: Text('Light Detection', style: TextStyle(color: Colors.red)),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LightDetectionScreen()),
-                );
-              },
+              title: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LightDetectionScreen()),
+                  );
+                },
+                icon: Icon(Icons.lightbulb_outline, color: Colors.red),
+                label: Text('Light Detection'),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black, backgroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                  textStyle: TextStyle(fontSize: 16),
+                  alignment: Alignment.centerLeft,
+                ),
+              ),
             ),
             ListTile(
-              title: Text('Motion Detection', style: TextStyle(color: Colors.blue)),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MotionDetectionScreen()),
-                );
-              },
+              title: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MotionDetectionScreen()),
+                  );
+                },
+                icon: Icon(Icons.directions_run, color: Colors.blue),
+                label: Text('Motion Detection'),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black, backgroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                  textStyle: TextStyle(fontSize: 16),
+                  alignment: Alignment.centerLeft,
+                ),
+              ),
             ),
             ListTile(
-              title: Text('Location Tracking', style: TextStyle(color: Colors.green)),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LocationTrackingScreen()),
-                );
-              },
+              title: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LocationTrackingScreen()),
+                  );
+                },
+                icon: Icon(Icons.location_on, color: Colors.green),
+                label: Text('Location Tracking'),
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.black, backgroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                  textStyle: TextStyle(fontSize: 16),
+                  alignment: Alignment.centerLeft,
+                ),
+              ),
             ),
           ],
         ),
