@@ -55,27 +55,41 @@ class _LightDetectionScreenState extends State<LightDetectionScreen> {
       appBar: AppBar(
         title: Text('Light Detection'),
       ),
-      body: Container(
-        color: Colors.blue,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Current light level:',
-                style: TextStyle(color: Colors.white),
-              ),
-              Text(
-                '$_luxString lux',
-                style: TextStyle(color: Colors.white, fontSize: 24),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // Image at the top with no space above it
+            Image.asset(
+              'assets/light.jpg',
+              height: 500, // Adjust height if needed
+              width: double.infinity, // Make the image fill the width
+              fit: BoxFit.cover, // Ensure the image covers the area
+            ),
+            SizedBox(height: 20), // Space between image and text
+
+            // Text widgets
+            Text(
+              'Current light level:',
+              style: TextStyle(color: Colors.black, fontSize: 18),
+            ),
+            Text(
+              '$_luxString lux',
+              style: TextStyle(color: Colors.black, fontSize: 24),
+            ),
+            SizedBox(height: 20), // Space between light level and button
+
+            // Button
+            Center(
+              child: ElevatedButton(
                 onPressed: _toggleLightMeasurement,
                 child: Text(_isMeasuringLight ? 'Stop Light Measurement' : 'Start Light Measurement'),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  textStyle: TextStyle(fontSize: 16),
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
