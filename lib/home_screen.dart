@@ -87,13 +87,34 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: Container(
-        color: Colors.blue,
-        child: Center(
-          child: Text(
-            'Welcome to Smart Home Monitoring',
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Welcome To',
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 48, // Increase font size
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 20), // Add some space between text and image
+            Image.asset(
+              'assets/anto.jpg',
+              fit: BoxFit.contain, // Slightly reduce the image size
+              alignment: Alignment.center, // Center the image
+            ),
+            SizedBox(height: 20), // Add some space between image and text
+            Text(
+              'Smart Home Monitoring',
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 32, // Increase font size
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
       ),
     );
